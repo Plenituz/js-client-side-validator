@@ -5,10 +5,10 @@ Here is how it works:
 The script assumes you have some kind of form element to validate, here is an example from our project Ethermediary
 
 ```html
-	<form id="mForm">
-		<input type="text" placeholder="Object or service associated" name="meta"/>
-		<input type="text" placeholder="Amount of tokens" name="amount"/>
-	</form>
+    <form id="mForm">
+        <input type="text" placeholder="Object or service associated" name="meta"/>
+        <input type="text" placeholder="Amount of tokens" name="amount"/>
+    </form>
 ```
 You need to remember the id you use for the form and the names of each input. Next you need to create the "validation data".
 The validation data is an array of objects with a the following attributes:
@@ -22,29 +22,29 @@ A check object has the following attributes:
 To continue our exemple here is what our validation data might look like:
 ```javascript
 var validationData = [
-	{
-		"name":"meta",
-		"checks":[
-			{
-				"funcName":"notEmpty",
-				"msg":"Error: Please enter the transaction purpose"
-			},
-			{
-				"funcName":"len",
-				"args": 10,
-				"msg":"Error: The transaction purpose must be exactly 10 character long"
-			}
-		]
-	},
-	{
-		"name":"amount",
-		"checks":[
-			{
-				"funcName":"isNumber",
-				"msg":"Error: Please enter a decimal number"
-			}
-		]
-	}
+    {
+        "name":"meta",
+        "checks":[
+            {
+                "funcName":"notEmpty",
+                "msg":"Error: Please enter the transaction purpose"
+            },
+            {
+                "funcName":"len",
+                "args": 10,
+                "msg":"Error: The transaction purpose must be exactly 10 character long"
+            }
+        ]
+    },
+    {
+        "name":"amount",
+        "checks":[
+            {
+                "funcName":"isNumber",
+                "msg":"Error: Please enter a decimal number"
+            }
+        ]
+    }
 ]
 ```
 Here the content of the input "meta" must be not empty AND exactly 10 character long. "amount" must be a number (int or float alike).
@@ -70,11 +70,11 @@ var validationResult = validator.validateFormData(formData, validationData);
 var inputData = document.getElementById("mInput").value;
 //here the validation data only contains the 'checks' part
 var validationData = [
-	{
-		"funcName":"notEmpty",
-		"msg":"Error: Please enter the transaction purpose"
-	}
-	//any number of check
+    {
+        "funcName":"notEmpty",
+        "msg":"Error: Please enter the transaction purpose"
+    }
+    //any number of check
 ]
 var validationResult = validator.validateInput(inputData, validationData);
 
@@ -97,22 +97,22 @@ Finally if you use `validator.validate()` you only get a list of error strings
 A validation result might look like this:
 ```javascript
 {
-	passed: false,
-	errors:[
-		{
-			inputName: "meta",
-			errors:[
-				"Error: Please enter the transaction purpose",
-				"Error: The transaction purpose must be exactly 10 character long"
-			]
-		},
-		{
-			inputName: "amount",
-			errors:[
-				"Error: Please enter a decimal number"
-			]
-		}
-	]
+    passed: false,
+    errors:[
+        {
+            inputName: "meta",
+            errors:[
+                "Error: Please enter the transaction purpose",
+                "Error: The transaction purpose must be exactly 10 character long"
+            ]
+        },
+        {
+            inputName: "amount",
+            errors:[
+                "Error: Please enter a decimal number"
+            ]
+        }
+    ]
 }
 ```
 List of the current validation functions:
@@ -123,7 +123,7 @@ List of the current validation functions:
 - isEmail: the input should follow the format of an email
 - isDecimal: the input must be a decimal number
 - isNumber: the input must be a number, integer or not
-	
+    
 Expanding the system:
 As you might have realised I build this system according to my needs and a lot of useful validation could be added.
 To do so it's really easy:
@@ -137,20 +137,20 @@ Creating the private function:
 ```javascript
 //code in validator.js..
 function isNumber(n) {
-	return !isNaN(parseFloat(n)) && isFinite(n);
+    return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
 //your code can go here!
 function isLower(data, l){
-	//make sure data is not undefined/null
-	if(data)
-		return data.length <= l;
-	else
-		return false;
+    //make sure data is not undefined/null
+    if(data)
+        return data.length <= l;
+    else
+        return false;
 }
 
 return {
-	isInt: (msg) => new PartialFunction(isInt, msg),
+    isInt: (msg) => new PartialFunction(isInt, msg),
 //code in validator.js...
 ```
 
