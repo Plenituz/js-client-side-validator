@@ -2,7 +2,7 @@ This is a script allowing to do form validating similar to express-validator but
 If you use this for sensible data please make sur you also validate your data on the server side, client side validation alone can be bypassed.
 
 Here is how it works:
-The script assumes you have some kind of form element to validate, here is an example from our project Ethermediary
+The script assumes you have some kind of form element to validate, here is an example from our project [Ethermediary](https://github.com/Ethermediary/ethermediary_web)
 
 ```html
     <form id="mForm">
