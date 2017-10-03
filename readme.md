@@ -47,7 +47,7 @@ var validationData = [
     }
 ]
 ```
-Here the content of the input "meta" must be not empty AND exactly 10 character long. "amount" must be a number (int or float alike).
+Here the content of the input "meta" must not be empty AND exactly 10 character long. "amount" must be a number (int or float alike).
 
 To perform the validation you have several options:
 ```javascript
@@ -125,7 +125,7 @@ List of the current validation functions:
 - isNumber: the input must be a number, integer or not
     
 Expanding the system:
-As you might have realised I build this system according to my needs and a lot of useful validation could be added.
+As you might have realised I built this system according to my needs and a lot of useful validation could be added.
 To do so it's really easy:
 1) create a private function in the validator that will perform the validation, accepting at least one argument which will be the input data
 2) create a public function returning a new PartialFunction object. The constructor expect a function, error message, and eventually some arguments
