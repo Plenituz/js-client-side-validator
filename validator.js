@@ -1,4 +1,3 @@
-
 var validator = (function(){
     function PartialFunction(func, msg, args){
         this.func = func;
@@ -15,18 +14,24 @@ var validator = (function(){
     }
 
     function notEmpty(data){
-        return data != "";
+        return data != "" && data;
     }
 
     function len(data, l){
-        if(data)
+        if(data){
+            if(typeof(data) == "object"){
+                if(!("length" in data))
+                    data = data.toString();
+            }else{
+                data = data.toString();
+            }
             return data.length == l;
-        else
+        }else
             return false;
     }
 
     function isAlphanumeric(data){
-        return new RegExp(/^[a-z0-9]+$/i).test(data);
+        return new RegExp(/^[a-z0-9]+$/i).test(data) || data == "";
     }
 
     function isEmail(data){
@@ -35,7 +40,8 @@ var validator = (function(){
     }
 
     function isDecimal(data){
-        return data % 1 != 0;
+        let mod = data % 1;
+        return mod != 0 && !isNaN(mod);
     }
 
     function isNumber(n) {
