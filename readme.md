@@ -162,4 +162,4 @@ isNumber: (msg) => new PartialFunction(isNumber, msg),
 //your function:
 isLower: (msg, l) => new PartialFunction(isLower, msg, l),
 ```
-This is one example of expanding the system, you could do much more! Feel free to use this code as you what for any purpose.
+This is one example of expanding the system, you could do much more! Feel free to use this code for any purpose.
